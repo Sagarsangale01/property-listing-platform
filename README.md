@@ -25,6 +25,22 @@
 
 ## 🛠️ Technical Architecture
 
+#### 🏗️ System Overview (Architecture)
+```mermaid
+graph TD
+    User([User / Agent]) <-->|HTTPS| Nginx[Nginx Proxy]
+    Nginx <-->|Served| Web[Frontend: React 18]
+    Web <-->|Async Requests| API[Backend: Express & TS]
+    API <-->|Relational Data| DB[(Database: PostgreSQL 15)]
+    
+    subgraph Docker_Network
+        Nginx
+        API
+        DB
+    end
+```
+
+
 ### Frontend Layer
 - **Core**: React 18 with Type-Safe Architecture (TypeScript)
 - **Design System**: Custom-themed **Material UI (MUI v6)** with a high-gloss, premium aesthetic.
@@ -114,6 +130,60 @@ npm run dev
 | :--- | :--- | :--- |
 | `VITE_API_BASE_URL` | Endpoint for the API | `http://localhost:5000/api/v1` |
 | `VITE_APP_NAME` | Application Brand Name | `The Propertist Platform` |
+
+## 📖 How to Use the Platform
+
+### 🔍 For Property Seekers
+1. **Browse & Search**: On the home page, use the search filters to find properties by location, budget, or configuration.
+2. **View Details**: Click on any property card to view deep specifications, amenities, and agent details.
+3. **Submit Enquiries**: 
+   - Interested in a property? Use the enquiry form on the property detail page.
+   - You can submit as a **Guest** (no account needed) or as a **Registered User**.
+
+### 🏛️ For Real Estate Agents
+1. **Security Access**: Register or Login through the "Login" portal. Ensure your role is set to `Agent` during registration.
+2. **Dashboard Management**: Once logged in, visit your **Agent Dashboard** to see:
+   - **My Listings**: Manage your active property portfolio.
+   - **Lead Center**: Track all incoming enquiries from seekers.
+3. **Property Launch**: Use the "Add Property" feature to upload new listings with high-fidelity specifics (BHK, Area, Status, etc.).
+4. **Lead Interaction**: Use the contact details provided in the "Lead Center" to follow up with potential buyers directly.
+
+---
+
+## 🛡️ Engineering Standards & Highlights
+
+*   **End-to-End Type Safety**: Developed with **TypeScript** across both layers to eliminate runtime errors and improve developer velocity.
+*   **Security-First Design**:
+    *   **Bcrypt**: Native password hashing for secure user storage.
+    *   **JWT**: Implementation of stateless authentication for API scalability.
+    *   **CORS**: Secure cross-origin resource sharing configuration.
+*   **DevOps Excellence**:
+    *   **Multi-Stage Docker Builds**: Frontend images are optimized for production using Nginx to serve static assets efficiently.
+    *   **Container Orchestration**: Docker Compose ensures identical environments across Development, Testing, and Production.
+*   **Scalable API Design**: Decentralized routing architecture (v1) making the system ready for future versioning.
+
+---
+
+## 🔗 API Reference Summary
+
+| Endpoint | Method | Description | Auth Required |
+| :--- | :--- | :--- | :--- |
+| `/api/v1/auth/register` | `POST` | Create a new user (Agent/Seeker) | No |
+| `/api/v1/auth/login` | `POST` | Authenticate and get JWT | No |
+| `/api/v1/properties` | `GET` | Fetch all properties with filters | No |
+| `/api/v1/properties/1` | `GET` | Get detailed property data | No |
+| `/api/v1/properties` | `POST` | Create a new listing | **Agent Only** |
+| `/api/v1/enquiries` | `POST` | Submit interest in a property | No (Guest/User) |
+| `/api/v1/enquiries/agent` | `GET` | View leads for your properties | **Agent Only** |
+
+---
+
+## 🔮 Project Roadmap (Future Scope)
+
+- [ ] **Google Maps Integration**: Visual property discovery on an interactive map.
+- [ ] **AI Property Insights**: Automated description generation using LLMs based on property specs.
+- [ ] **Real-time Notifications**: Web-socket based alerts for agents when new leads arrive.
+- [ ] **Managed Image Storage**: Migration to AWS S3 for high-resolution property media.
 
 ---
 *Created for the professional real estate market. Engineered for excellence.*
