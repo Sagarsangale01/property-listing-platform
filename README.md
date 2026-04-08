@@ -75,7 +75,7 @@ Launch the entire stack with a single command:
 ```bash
 docker-compose up --build -d
 ```
-*Access the frontend at `http://localhost`, API at `http://localhost:5000`.*
+*Access the frontend at `http://54.163.203.92`, API at `http://54.163.203.92:5000`.*
 
 ### 🛠️ Option B: Local Development
 **1. Prerequisites:**
