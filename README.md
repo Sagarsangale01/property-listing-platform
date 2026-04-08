@@ -101,7 +101,7 @@ npm run dev
 ## 🔑 Secure Configuration (.env)
 
 ### Backend Configuration (`/backend/.env`)
-| Variable | Description | Default |
+| Variable | Description | Sample Value |
 | :--- | :--- | :--- |
 | `DB_HOST` | Database host (use `db` for Docker) | `localhost` |
 | `DB_USER` | PostgreSQL Username | `postgres` |
@@ -110,7 +110,7 @@ npm run dev
 | `JWT_SECRET` | Secret key for token signing | `[Required]` |
 
 ### Frontend Configuration (`/frontend/.env`)
-| Variable | Description | Value |
+| Variable | Description | Sample Value |
 | :--- | :--- | :--- |
 | `VITE_API_BASE_URL` | Endpoint for the API | `http://localhost:5000/api/v1` |
 | `VITE_APP_NAME` | Application Brand Name | `The Propertist Platform` |
