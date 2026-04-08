@@ -157,6 +157,7 @@ Use these credentials to test the platform on the [Live Server](http://54.163.20
 | Role | Email | Password |
 | :--- | :--- | :--- |
 | **Agent** | `test@agent.com` | `Agent@1234` |
+| **Agent** | `agent+one@gmail.com` | `Agent@123` |
 | **Seeker** | `test@user.com` | `User@1234` |
 
 *Note: You can also register a fresh account using the [Registration Page](http://54.163.203.92/register).*
@@ -188,6 +189,13 @@ Use these credentials to test the platform on the [Live Server](http://54.163.20
 | `/api/v1/properties` | `POST` | Create a new listing | **Agent Only** |
 | `/api/v1/enquiries` | `POST` | Submit interest in a property | No (Guest/User) |
 | `/api/v1/enquiries/agent` | `GET` | View leads for your properties | **Agent Only** |
+
+
+### 🚀 Interactive API Documentation
+[![Postman Collection](https://img.shields.io/badge/Postman-Collection-FF6C37?style=for-the-badge&logo=postman)](https://www.postman.com/the-propertist-platform/workspace/the-propertist-platform-api/overview)
+
+Explore and test the API endpoints in real-time using our dedicated Postman Workspace.
+
 
 ---
 

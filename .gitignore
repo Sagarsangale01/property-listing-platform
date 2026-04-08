@@ -29,3 +29,6 @@ logs/
 
 # Database persistence (if local)
 postgres_data/
+
+# AWS Keys file
+aws_keys/
