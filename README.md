@@ -150,6 +150,19 @@ npm run dev
 
 ---
 
+## 🔑 Demo Credentials (Live Application)
+
+Use these credentials to test the platform on the [Live Server](http://54.163.203.92):
+
+| Role | Email | Password |
+| :--- | :--- | :--- |
+| **Agent** | `test@agent.com` | `Agent@1234` |
+| **Seeker** | `test@user.com` | `User@1234` |
+
+*Note: You can also register a fresh account using the [Registration Page](http://54.163.203.92/register).*
+
+---
+
 ## 🛡️ Engineering Standards & Highlights
 
 *   **End-to-End Type Safety**: Developed with **TypeScript** across both layers to eliminate runtime errors and improve developer velocity.
