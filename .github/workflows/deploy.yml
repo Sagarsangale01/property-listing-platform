@@ -7,19 +7,30 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
 
+    steps:
       - name: Deploy to AWS EC2 via SSH
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.AWS_HOST }}
           username: ${{ secrets.AWS_USERNAME }}
           key: ${{ secrets.AWS_SSH_KEY }}
           script: |
-            cd ~/propertyApp
-            git pull origin main
+            echo "🚀 Starting Deployment..."
+
+            cd ~/property-listing-platform || exit
+
+            echo "📥 Fetching latest code..."
+            git fetch origin
+            git reset --hard origin/main
+
+            echo "🛑 Stopping old containers..."
             docker-compose down
-            docker-compose up --build -d
+
+            echo "🔨 Rebuilding and starting containers..."
+            docker-compose up -d --build
+
+            echo "🧹 Cleaning unused images..."
             docker image prune -f
+
+            echo "✅ Deployment Completed!"
