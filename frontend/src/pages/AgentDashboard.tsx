@@ -56,7 +56,7 @@ const AgentDashboard = () => {
   if (loading) return <LoadingSpinner message="Generating your executive insights..." />;
 
   // Dynamic values for the stats section
-  const totalValuation = properties.reduce((acc, p) => acc + p.price, 0);
+  const totalValuation = properties.reduce((acc, p) => acc + Number(p.price), 0);
 
   return (
     <Box sx={{ background: '#f8f9fa', minHeight: '100vh', py: { xs: 4, md: 8 } }}>
@@ -153,7 +153,7 @@ const AgentDashboard = () => {
                         <Chip label={`${property.property_type || 'APT'}`} size="small" sx={{ fontWeight: 800, bgcolor: '#f1f5f9', color: '#475569', borderRadius: 1.5 }} />
                       </Box>
                     </TableCell>
-                    <TableCell sx={{ fontWeight: 900, color: 'primary.main', fontSize: '1.1rem' }}>₹{property.price.toLocaleString()}</TableCell>
+                    <TableCell sx={{ fontWeight: 900, color: 'primary.main', fontSize: '1.1rem' }}>₹{Number(property.price).toLocaleString()}</TableCell>
                     <TableCell align="right" sx={{ pr: 4 }}>
                       <Tooltip title="Edit Listing"><IconButton component={Link} to={`/edit-property/${property.id}`} color="secondary" size="small" sx={{ mr: 1, border: '1px solid #eee' }}><EditIcon fontSize="small" /></IconButton></Tooltip>
                       <Tooltip title="View Page"><IconButton component={Link} to={`/property/${property.id}`} size="small" sx={{ mr: 1, border: '1px solid #eee', color: '#4c84ff' }}><VisibilityIcon fontSize="small" /></IconButton></Tooltip>
