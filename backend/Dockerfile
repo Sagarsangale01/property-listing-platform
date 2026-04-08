@@ -19,7 +19,6 @@ RUN npm install --production
 
 # Copy built files from previous stage
 COPY --from=build /app/dist ./dist
-COPY --from=build /app/.env ./
 
 EXPOSE 5000
 
