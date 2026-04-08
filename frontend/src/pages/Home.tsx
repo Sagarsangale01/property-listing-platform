@@ -49,10 +49,11 @@ const Home = () => {
     return () => clearTimeout(timer);
   }, [location, bhk, budget, constructionStatus, listingType, propertyType]);
 
-  const formatPrice = (price: number) => {
-    if (price >= 10000000) return `₹ ${(price / 10000000).toFixed(2)} Cr`;
-    if (price >= 100000) return `₹ ${(price / 100000).toFixed(2)} L`;
-    return `₹ ${price.toLocaleString()}`;
+  const formatPrice = (price: number | string) => {
+    const numPrice = Number(price);
+    if (numPrice >= 10000000) return `₹ ${(numPrice / 10000000).toFixed(2)} Cr`;
+    if (numPrice >= 100000) return `₹ ${(numPrice / 100000).toFixed(2)} L`;
+    return `₹ ${numPrice.toLocaleString()}`;
   }
 
   const formatLabel = (val: number) => {

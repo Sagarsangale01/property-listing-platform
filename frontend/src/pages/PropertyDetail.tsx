@@ -186,7 +186,7 @@ const PropertyDetail = () => {
               <Box display="flex" justifyContent="space-between" alignItems="center">
                  <Box>
                     <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 800 }}>TOTAL VALUATION</Typography>
-                    <Typography variant="h3" fontWeight={950} sx={{ color: '#2c3e50', mt: -0.5 }}>₹{property.price.toLocaleString()}</Typography>
+                    <Typography variant="h3" fontWeight={950} sx={{ color: '#2c3e50', mt: -0.5 }}>₹{Number(property.price).toLocaleString()}</Typography>
                  </Box>
                  <Chip label="PRICE NEGOTIABLE" sx={{ fontWeight: 900, bgcolor: '#fff0ef', color: 'primary.main', border: '1px solid', borderColor: 'primary.light' }} />
               </Box>
