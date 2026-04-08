@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "b6a78c9d-12e0-43f1-b6a7-8c9d12e043f1",
+		"name": "Property Listing API",
+		"description": "API collection for Property Listing and Enquiry System - Updated with Agent Dashboard, guest enquiries, and new property fields",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Agent Sagar\",\n    \"email\": \"sagar@example.com\",\n    \"password\": \"password123\",\n    \"phone\": \"+91 99999 99999\",\n    \"role\": \"agent\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					}
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"sagar@example.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Properties",
+			"item": [
+				{
+					"name": "Get All Properties (Public)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/properties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"properties"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get My Properties (Agent Only)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/properties/my/properties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"properties",
+								"my",
+								"properties"
+							]
+						}
+					}
+				},
+				{
+					"name": "Create Property (Agent Only)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Sea View Apartment\",\n    \"description\": \"Luxury 3BHK with stunning sunset views.\",\n    \"location\": \"Bandra, Mumbai\",\n    \"bhk\": 3,\n    \"price\": 12000000,\n    \"property_type\": \"Apartment\",\n    \"listing_type\": \"Resale\",\n    \"construction_status\": \"Ready To Move In\",\n    \"bathrooms\": 3,\n    \"furnishing\": \"Fully Furnished\",\n    \"area_sqft\": 1800,\n    \"image_url\": \"https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/properties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"properties"
+							]
+						}
+					}
+				},
+				{
+					"name": "Update Property (Agent Only)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Sea View Apartment - Updated\",\n    \"description\": \"Updated description for the luxury apartment.\",\n    \"price\": 12500000,\n    \"construction_status\": \"Ready To Move In\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/properties/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"properties",
+								"1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Delete Property (Agent Only)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/properties/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"properties",
+								"1"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Enquiries",
+			"item": [
+				{
+					"name": "Submit Enquiry (Guest)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"property_id\": 1,\n    \"guest_first_name\": \"Guest\",\n    \"guest_last_name\": \"User\",\n    \"guest_email\": \"guest@example.com\",\n    \"guest_phone\": \"9876543210\",\n    \"message\": \"I am interested as a guest user.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/enquiries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"enquiries"
+							]
+						}
+					}
+				},
+				{
+					"name": "Submit Enquiry (Seeker Logged-In)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"property_id\": 1,\n    \"message\": \"I'm interested in viewing this apartment next Tuesday.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/enquiries",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"enquiries"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Agent Enquiries (Agent Dashboard)",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{jwt_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/enquiries/agent",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"enquiries",
+								"agent"
+							]
+						}
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "jwt_token",
+			"value": "replace_with_actual_token"
+		}
+	]
+}
