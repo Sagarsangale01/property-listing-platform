@@ -95,7 +95,19 @@ const Navbar = () => {
               <>
                 <Button component={Link} to="/" sx={{ color: '#2c3e50', fontWeight: 700 }}>HOME</Button>
                 <Button component={Link} to="/login" sx={{ color: '#2c3e50', fontWeight: 700 }}>LOGIN</Button>
-                <Button component={Link} to="/register" variant="contained" color="primary" sx={{ px: 3 }}>POST PROPERTY FREE</Button>
+                <Button 
+                  component={Link} to="/register" 
+                  variant="contained" color="primary" 
+                  sx={{ 
+                    px: { xs: 2, sm: 3 }, 
+                    fontSize: { xs: '0.75rem', sm: '0.875rem' },
+                    fontWeight: 800,
+                    whiteSpace: 'nowrap'
+                  }}
+                >
+                  <Box component="span" sx={{ display: { xs: 'none', sm: 'inline' } }}>POST PROPERTY FREE</Box>
+                  <Box component="span" sx={{ display: { xs: 'inline', sm: 'none' } }}>POST</Box>
+                </Button>
               </>
             ) : (
               <Box display="flex" alignItems="center" gap={1}>

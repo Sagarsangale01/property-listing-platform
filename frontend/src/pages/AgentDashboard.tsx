@@ -56,7 +56,8 @@ const AgentDashboard = () => {
   if (loading) return <LoadingSpinner message="Generating your executive insights..." />;
 
   // Dynamic values for the stats section
-  const totalValuation = properties.reduce((acc, p) => acc + Number(p.price), 0);
+  // Dynamic values for the stats section
+  const totalValuation = properties.reduce((acc, p) => acc + (Number(p.price) || 0), 0);
 
   return (
     <Box sx={{ background: '#f8f9fa', minHeight: '100vh', py: { xs: 4, md: 8 } }}>
@@ -154,10 +155,12 @@ const AgentDashboard = () => {
                       </Box>
                     </TableCell>
                     <TableCell sx={{ fontWeight: 900, color: 'primary.main', fontSize: '1.1rem' }}>₹{Number(property.price).toLocaleString()}</TableCell>
-                    <TableCell align="right" sx={{ pr: 4 }}>
-                      <Tooltip title="Edit Listing"><IconButton component={Link} to={`/edit-property/${property.id}`} color="secondary" size="small" sx={{ mr: 1, border: '1px solid #eee' }}><EditIcon fontSize="small" /></IconButton></Tooltip>
-                      <Tooltip title="View Page"><IconButton component={Link} to={`/property/${property.id}`} size="small" sx={{ mr: 1, border: '1px solid #eee', color: '#4c84ff' }}><VisibilityIcon fontSize="small" /></IconButton></Tooltip>
-                      <Tooltip title="Remove Listing"><IconButton color="error" size="small" onClick={() => handleDelete(property.id)} sx={{ border: '1px solid #ffebee' }}><DeleteIcon fontSize="small" /></IconButton></Tooltip>
+                    <TableCell align="right" sx={{ pr: 4, whiteSpace: 'nowrap' }}>
+                      <Box display="flex" justifyContent="flex-end" gap={0.5}>
+                        <Tooltip title="Edit Listing"><IconButton component={Link} to={`/edit-property/${property.id}`} color="secondary" size="small" sx={{ border: '1px solid #eee' }}><EditIcon fontSize="small" /></IconButton></Tooltip>
+                        <Tooltip title="View Page"><IconButton component={Link} to={`/property/${property.id}`} size="small" sx={{ border: '1px solid #eee', color: '#4c84ff' }}><VisibilityIcon fontSize="small" /></IconButton></Tooltip>
+                        <Tooltip title="Remove Listing"><IconButton color="error" size="small" onClick={() => handleDelete(property.id)} sx={{ border: '1px solid #ffebee' }}><DeleteIcon fontSize="small" /></IconButton></Tooltip>
+                      </Box>
                     </TableCell>
                   </TableRow>
                 ))}
