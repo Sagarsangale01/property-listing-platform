@@ -3,6 +3,7 @@
 [![AWS Deployment](https://img.shields.io/badge/Deployed%20to-AWS%20EC2-orange?style=for-the-badge&logo=amazon-aws)](https://aws.amazon.com/)
 [![Dockerized](https://img.shields.io/badge/Docker-Enabled-blue?style=for-the-badge&logo=docker)](https://www.docker.com/)
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub%20Actions-black?style=for-the-badge&logo=github-actions)](https://github.com/features/actions)
+[![Postman Collection](https://img.shields.io/badge/Postman-Collection-FF6C37?style=for-the-badge&logo=postman)](https://www.postman.com/the-propertist-platform/workspace/the-propertist-platform-api/overview)
 
 **The Propertist** is a premium, full-stack real estate intelligence platform engineered for modern property agents and discerning high-end buyers. Built with a focus on luxury aesthetics and high-performance lead conversion, it streamlines the complex journey from property discovery to successful acquisition.
 
@@ -194,7 +195,7 @@ Use these credentials to test the platform on the [Live Server](http://54.163.20
 ### 🚀 Interactive API Documentation
 [![Postman Collection](https://img.shields.io/badge/Postman-Collection-FF6C37?style=for-the-badge&logo=postman)](https://www.postman.com/the-propertist-platform/workspace/the-propertist-platform-api/overview)
 
-Explore and test the API endpoints in real-time using our dedicated Postman Workspace.
+Explore and test the API endpoints in real-time using our dedicated [Postman Workspace](https://www.postman.com/the-propertist-platform/workspace/the-propertist-platform-api/overview) or import the local [postman_collection.json](./postman_collection.json) file.
 
 
 ---
