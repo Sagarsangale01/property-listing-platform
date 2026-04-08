@@ -197,8 +197,9 @@ Use these credentials to test the platform on the [Live Server](http://54.163.20
 
 
 ### 🚀 Interactive API Documentation
+[![Postman Collection](https://img.shields.io/badge/Postman-Collection-FF6C37?style=for-the-badge&logo=postman)](https://www.postman.com/the-propertist-platform/workspace/the-propertist-platform-api/overview)
 
-Explore and test the API endpoints in real-time using our dedicated [Postman Workspace](https://www.postman.com/the-propertist-platform/workspace/the-propertist-platform-api/overview) or import the local [postman_collection.json](./postman_collection.json) file.
+Explore and test the API endpoints in real-time using our dedicated [Postman Workspace](https://www.postman.com/the-propertist-platform/workspace/the-propertist-platform-api/overview) or import the local [Property Listing API v1.postman_collection.json](./Property%20Listing%20API%20v1.postman_collection.json) file.
 
 
 ---

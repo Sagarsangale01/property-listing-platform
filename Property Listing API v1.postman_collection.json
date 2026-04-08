@@ -1,0 +1,328 @@
+{
+  "info": {
+    "_postman_id": "e6720b41-dea1-4fb5-81b7-6d3e66f0475c",
+    "name": "Property Listing API v1",
+    "description": "Premium Real Estate API for Agents and Seekers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "12038459"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"John Agent\",\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\",\n    \"phone\": \"9999999999\",\n    \"role\": \"agent\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/register",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"john@example.com\",\n    \"password\": \"password123\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/auth/login",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Properties",
+      "item": [
+        {
+          "name": "Get All Properties (Public)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/properties",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "properties"
+              ],
+              "query": [
+                {
+                  "key": "location",
+                  "value": "Mumbai",
+                  "disabled": true
+                },
+                {
+                  "key": "minPrice",
+                  "value": "1000000",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Property By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/properties/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "properties",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Property (Agent Only)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Luxury Ocean Side Apartment\",\n    \"description\": \"A beautiful sea-facing 3BHK in the heart of Mumbai.\",\n    \"location\": \"Worli, Mumbai\",\n    \"price\": 45000000,\n    \"bhk\": 3,\n    \"area_sqft\": 1850,\n    \"image_url\": \"https://images.unsplash.com/photo-1512917774080-9991f1c4c750\",\n    \"property_type\": \"Apartment\",\n    \"construction_status\": \"Ready To Move In\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/properties",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "properties"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Property",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"price\": 46000000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/properties/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "properties",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Property",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/properties/1",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "properties",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "My Properties (Agent)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/properties/my/properties",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "properties",
+                "my",
+                "properties"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Enquiries",
+      "item": [
+        {
+          "name": "Submit Enquiry (Guest or User)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"property_id\": 1,\n    \"message\": \"I am interested in this luxury apartment.\",\n    \"guest_first_name\": \"Guest\",\n    \"guest_last_name\": \"User\",\n    \"guest_email\": \"guest@example.com\",\n    \"guest_phone\": \"8888888888\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/enquiries",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "enquiries"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get My Leads (Agent Only)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{jwt_token}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/enquiries/agent",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "enquiries",
+                "agent"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://54.163.203.92:5000/api/v1"
+    },
+    {
+      "key": "jwt_token",
+      "value": "your_token_here"
+    }
+  ]
+}
